@@ -40,9 +40,10 @@
 					class="nav-link dropdown-toggle" href="#" id="dropdown01"
 					data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Students</a>
 					<div class="dropdown-menu" aria-labelledby="dropdown01">
-						<a class="dropdown-item" href="getAllCourses">Add</a> <a class="dropdown-item"
-							href="students">View Students</a><a class="dropdown-item"
-							href="studentcoursesenrolled">View Student Courses</a>
+						<a class="dropdown-item" href="getAllCourses">Add</a> <a
+							class="dropdown-item" href="students">View Students</a><a
+							class="dropdown-item" href="studentcoursesenrolled">View
+							Student Courses</a>
 					</div></li>
 			</ul>
 		</div>
@@ -52,9 +53,11 @@
 	</div>
 	<div class="container">
 		<%
-			if (request.getAttribute("COURSE_LIST") != null && ((List<CourseBean>) request.getAttribute("COURSE_LIST")).size() > 0) {
+			if (request.getAttribute("COURSE_LIST") != null
+					&& ((List<CourseBean>) request.getAttribute("COURSE_LIST")).size() > 0) {
 		%>
-		<table id="coursesTable" class="table clear-fix" cellspacing="0" width="100%">
+		<table id="coursesTable" class="table clear-fix" cellspacing="0"
+			width="100%">
 			<thead class="table-success">
 				<tr class="table-inverse">
 					<th>ID</th>
@@ -64,15 +67,6 @@
 					<th>Create date</th>
 				</tr>
 			</thead>
-			<tfoot>
-				<tr class="table-inverse">
-					<th>ID</th>
-					<th>Code</th>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Create date</th>
-				</tr>
-			</tfoot>
 			<tbody>
 
 				<%
@@ -95,7 +89,18 @@
 		<%
 			}
 		%>
+
+	<form name="ViewCoursesForm" id="ViewCoursesForm" action="viewCourseInfo" method="get">
+	<br/>
+		<div class="form-group row">
+			<div class="col-lg-3">
+				<button type="button" class="btn btn-info disabled" id="editButton" disabled="disabled">Edit
+					Course</button>
+			</div>
+		</div>
 	</div>
+	<input type="hidden" name="courseId" id="courseId"/>
+	</form>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
@@ -108,8 +113,24 @@
 
 	<script type="text/javascript" class="init">
 		$(document).ready(function() {
-			$('#coursesTable').DataTable({
+			var table = $('#coursesTable').DataTable({
 				"pageLength" : 5
+			});
+
+			$('#coursesTable tbody').on('click', 'tr', function() {
+				table.$('tr.table-info').addClass('table-warning');
+				table.$('tr.table-info').removeClass('table-info');
+				$(this).removeClass('table-warning');
+				$(this).addClass('table-info');
+				$('#editButton').removeClass('disabled');
+				$('#editButton').removeAttr('disabled')
+			});
+			
+			$('#editButton').click(function(){
+				var data = table.rows('.table-info').data();
+		        var formObj =$('#ViewCoursesForm');
+		        $('#courseId').val(data[0][0]);
+		        formObj.attr('action','viewCourseInfo?courseId='+data[0][0]).trigger('submit');
 			});
 		});
 	</script>

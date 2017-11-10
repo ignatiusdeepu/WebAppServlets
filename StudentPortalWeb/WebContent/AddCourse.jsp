@@ -114,7 +114,7 @@ body {
 						<div class="col-lg-3">&nbsp;</div>
 						<div class="col-lg-3">
 							<button type="button" class="btn btn-info"
-								onclick="validateCourseFields();submitCourseForm();">Add
+								onclick="return validateCourseFields();submitCourseForm();">Add
 								Course</button>
 						</div>
 					</div>

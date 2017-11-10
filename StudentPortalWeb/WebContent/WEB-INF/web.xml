@@ -50,4 +50,15 @@
   	<url-pattern>/studentcoursesenrolled</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>view--courses-controller</servlet-name>
+  	<servlet-class>org.avco.controller.ViewCourseController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>view--courses-controller</servlet-name>
+  	<url-pattern>/viewCourseInfo</url-pattern>
+  </servlet-mapping>
+  
+  
 </web-app>
