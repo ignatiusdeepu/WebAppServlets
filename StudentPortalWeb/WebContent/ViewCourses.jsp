@@ -51,10 +51,20 @@
 	<div class="clearfix">
 		<br /> <br /> <br /> <br />
 	</div>
+	<%!
+	
+		public void print(String str){
+		System.out.println("This is from print");
+	}
+	%>
 	<div class="container">
 		<%
+			print("hello");
 			if (request.getAttribute("COURSE_LIST") != null
 					&& ((List<CourseBean>) request.getAttribute("COURSE_LIST")).size() > 0) {
+				if(session!=null){
+					session.getAttribute("");
+				}
 		%>
 		<table id="coursesTable" class="table clear-fix" cellspacing="0"
 			width="100%">
@@ -123,7 +133,7 @@
 				$(this).removeClass('table-warning');
 				$(this).addClass('table-info');
 				$('#editButton').removeClass('disabled');
-				$('#editButton').removeAttr('disabled')
+				$('#editButton').removeAttr('disabled');
 			});
 			
 			$('#editButton').click(function(){

@@ -81,6 +81,7 @@ body {
 				<div class="card-header bg-info">Student Portal</div>
 				<div class="card-block">
 					<br />
+					
 					<div class="form-group row">
 						<div class="col-lg-3 text-right">
 							<label for="courseCode">Course Code</label>
@@ -107,14 +108,14 @@ body {
 						</div>
 						<div class="col-lg-3">
 							<input type="text" class="form-control" id="courseDesc"
-								name="courseDesc" placeholder="Enter course description">
+								name="courseDesc" placeholder="Enter course description" value="">
 						</div>
 					</div>
 					<div class="form-group row">
 						<div class="col-lg-3">&nbsp;</div>
 						<div class="col-lg-3">
 							<button type="button" class="btn btn-info"
-								onclick="return validateCourseFields();submitCourseForm();">Add
+								onclick="validateCourseFields();submitCourseForm();">Add
 								Course</button>
 						</div>
 					</div>

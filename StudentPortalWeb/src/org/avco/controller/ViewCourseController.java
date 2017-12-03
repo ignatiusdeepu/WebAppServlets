@@ -13,4 +13,8 @@ public class ViewCourseController extends HttpServlet{
 		System.out.println(request.getParameter("courseId"));
 	
 	}
+	
+	public Double getExchangeRate(String srcCurrency,String destCurr){
+		return 1.1;
+	}
 }
